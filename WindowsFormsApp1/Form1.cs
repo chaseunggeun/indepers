@@ -16,5 +16,21 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+        private void btnSon_Click(object sender, EventArgs e)
+        {
+            FormSon formSon = new FormSon();
+            formSon.Owner = this;
+            formSon.Show();
+            this.Visible = false;
+        }
+
+        private void btnSa_Click(object sender, EventArgs e)
+        {
+            FormSa formSa = new FormSa();
+            formSa.Owner = this;
+            formSa.Show();
+            this.Visible = false;
+        }
+
     }
 }

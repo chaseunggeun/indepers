@@ -28,13 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnSon = new System.Windows.Forms.Button();
+            this.btnSa = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnSon
+            // 
+            this.btnSon.Location = new System.Drawing.Point(85, 98);
+            this.btnSon.Name = "btnSon";
+            this.btnSon.Size = new System.Drawing.Size(237, 238);
+            this.btnSon.TabIndex = 0;
+            this.btnSon.Text = "손님용";
+            this.btnSon.UseVisualStyleBackColor = true;
+            this.btnSon.Click += new System.EventHandler(this.btnSon_Click);
+            // 
+            // btnSa
+            // 
+            this.btnSa.Location = new System.Drawing.Point(467, 98);
+            this.btnSa.Name = "btnSa";
+            this.btnSa.Size = new System.Drawing.Size(237, 238);
+            this.btnSa.TabIndex = 1;
+            this.btnSa.Text = "사장용";
+            this.btnSa.UseVisualStyleBackColor = true;
+            this.btnSa.Click += new System.EventHandler(this.btnSa_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSa);
+            this.Controls.Add(this.btnSon);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnSon;
+        private System.Windows.Forms.Button btnSa;
     }
 }
 

@@ -52,8 +52,29 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSa.Designer.cs">
+      <DependentUpon>FormSa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSon.Designer.cs">
+      <DependentUpon>FormSon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSa.resx">
+      <DependentUpon>FormSa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSon.resx">
+      <DependentUpon>FormSon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PacketLibrary\PacketLibrary.csproj">
+      <Project>{307de55d-7ed2-4bf1-9358-0a1e146b3d19}</Project>
+      <Name>PacketLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
