@@ -29,6 +29,9 @@ namespace WindowsFormsApp1
         public Initiailize m_initializeClass;
         public Login m_loginClass;
 
+        public ShoppingCart shoppingCart;
+
+
         public void Send()
         {
             this.m_networkstream.Write(this.sendBuffer, 0, this.sendBuffer.Length);
@@ -88,6 +91,48 @@ namespace WindowsFormsApp1
         {
             this.m_client.Close();
             this.m_networkstream.Close();
+        }
+
+        private void btn_damgi_Click(object sender, EventArgs e)
+        {
+            Beverage beverage = new Beverage(txt_bvgname.Text, int.Parse(txt_bvgprice.Text));
+            shoppingCart.AddItem(beverage);
+            RefreshShoppingCart();
+        }
+        private void InitializeShoppingCartListView()
+        {
+            lvw_shoppingcart.Clear();
+            lvw_shoppingcart.Columns.Add("name", "Name");
+            lvw_shoppingcart.Columns.Add("price", "Price");
+        }
+
+        private void FormSon_Load(object sender, EventArgs e)
+        {
+            shoppingCart = new ShoppingCart();
+            InitializeShoppingCartListView();
+        }
+
+        private void RefreshShoppingCart()
+        {
+            lvw_shoppingcart.Items.Clear();
+            foreach (var item in shoppingCart.items)
+            {
+                ListViewItem bvgItem = new ListViewItem(item.Name);
+                bvgItem.SubItems.Add(item.Price.ToString());
+                lvw_shoppingcart.Items.Add(bvgItem);
+            }
+        }
+
+        private void btn_order_Click(object sender, EventArgs e)
+        {
+            if (!this.m_bConnect)
+            {
+                return;
+            }
+            shoppingCart.Type = (int)PacketType.주문;
+
+            Packet.Serialize(shoppingCart).CopyTo(this.sendBuffer, 0);
+            this.Send();
         }
     }
 }

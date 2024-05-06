@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
 
         public Initiailize m_initializeClass;
         public Login m_loginClass;
+        public ShoppingCart m_shoppingCartClass;
 
         public void RUN()
         {
@@ -91,6 +92,20 @@ namespace WindowsFormsApp1
                             this.Invoke(new MethodInvoker(delegate ()
                             {
                                 this.txt_server_state.AppendText("패킷 전송 성공. " + "Login Class Data is " + this.m_loginClass.m_strID + "\r\n");
+                            }));
+                            break;
+                        }
+                    case (int)PacketType.주문:
+                        {
+                            ShoppingCart receivedCart = (ShoppingCart)Packet.Desserialize(this.readBuffer);
+                            this.Invoke(new MethodInvoker(delegate ()
+                            {
+                                this.txt_server_state.AppendText("패킷 전송 성공. " + "Received Shopping Cart Data is " + receivedCart + "\r\n");
+                                foreach (var item in receivedCart.items)
+                                {
+                                    this.txt_server_state.AppendText("이름: " + item.Name + ", " + "가격: " + item.Price.ToString() + "\r\n");
+                                }
+                                
                             }));
                             break;
                         }
